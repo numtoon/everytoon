@@ -1,30 +1,25 @@
 import styled from 'styled-components/native';
 
-const ComicCard = () => {
-  const props = {
-    imageUrl:
-      'https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80',
-    title: '세상에서 가장 신비한 문자',
-    author: '세상에서 가장 신비한 유진씨',
-    gradePoint: 4.23,
-  };
+interface Props {
+  title: string;
+  author: string;
+}
 
+const ComicCard = (props: Props) => {
+  const { title, author } = props;
   return (
     <CardContainer>
       <ImageBox
         source={{
-          uri: props.imageUrl,
+          uri: 'https://random.imagecdn.app/500/150',
         }}
       />
       <Title numberOfLines={1} ellipsizeMode='tail'>
-        {props.title}
+        {title}
       </Title>
-      <AuthorBox>
-        <Author numberOfLines={1} ellipsizeMode='tail'>
-          {props.author}
-        </Author>
-        <GradePoint>★{props.gradePoint}</GradePoint>
-      </AuthorBox>
+      <Author numberOfLines={1} ellipsizeMode='tail'>
+        {author}
+      </Author>
     </CardContainer>
   );
 };
@@ -47,20 +42,8 @@ const Title = styled.Text`
   font-weight: 600;
 `;
 
-const AuthorBox = styled.View`
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`;
-
 const Author = styled.Text`
-  width: 60%;
-  color: ${({ theme }) => theme.olive60};
-  font-size: 11px;
-`;
-
-const GradePoint = styled.Text`
-  margin-left: 2px;
+  width: 100%;
   color: ${({ theme }) => theme.olive60};
   font-size: 11px;
 `;
