@@ -1,17 +1,21 @@
-import styled from 'styled-components/native';
+import styled, { ThemeProvider } from 'styled-components/native';
+
+import { theme } from './styles/theme';
 
 const App = () => {
   return (
-    <AppContainer>
-      <TitleText primary='yellow'>Open up App</TitleText>
-      <TitleText primary='pink'>start working on your app!</TitleText>
-    </AppContainer>
+    <ThemeProvider theme={theme}>
+      <AppContainer>
+        <TitleText primary='yellow'>Open up App</TitleText>
+        <TitleText primary='pink'>start working on your app!</TitleText>
+      </AppContainer>
+    </ThemeProvider>
   );
 };
 
 const AppContainer = styled.View`
   flex: 1;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.olive20};
   align-items: center;
   justify-content: center;
 `;
